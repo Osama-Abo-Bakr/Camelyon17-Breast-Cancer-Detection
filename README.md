@@ -14,7 +14,7 @@ pip install -U efficientnet tensorflow numpy matplotlib pandas pillow scikit-lea
 
 ## 2. Data Loading and Exploration
 
-The dataset used is the [Camelyon17](https://www.camelyon17.org/) dataset. We start by loading and visualizing the data to understand its structure and the distribution of classes.
+The dataset used is the [Camelyon17](https://www.kaggle.com/competitions/histopathologic-cancer-detection/overview) dataset. We start by loading and visualizing the data to understand its structure and the distribution of classes.
 
 ### Code
 
