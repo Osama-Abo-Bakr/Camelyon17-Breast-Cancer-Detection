@@ -69,6 +69,10 @@ We designed a custom ResNet50 model, leveraging the strengths of residual networ
 
 ### Custom ResNet50 Implementation
 
+#### ResNet Model
+
+![ResNet Model](resnet.png)
+
 ```python
 def identity_block(X, f, filters, training=True, initializer=random_uniform):
     # Implementation details...
@@ -84,6 +88,10 @@ def ResNet50(input_shape=(96, 96, 3)):
 ```
 
 ### EfficientNetB0 Implementation
+
+#### EfficientNetB0 Model
+
+![EfficientNetB0 Model](EfficientNet.jpg)
 
 ```python
 import efficientnet.tfkeras as efn
@@ -102,6 +110,9 @@ cnn = Sequential([
 ```
 
 ### Vision Transformer (ViT) Implementation
+#### Vision Transformer
+
+![Vision Transformer Model](vit_architecture.jpg)
 
 ```python
 from transformers import ViTForImageClassification, ViTokenizer
