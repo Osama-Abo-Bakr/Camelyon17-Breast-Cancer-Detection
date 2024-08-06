@@ -186,7 +186,7 @@ Oversampling is a technique used to address class imbalance by increasing the nu
 ## 5. Model Design
 
 We designed a custom ResNet50 model, leveraging the strengths of residual networks to address the image classification task.
-We also experimented with EfficientNetB0 and Vision Transformers (ViT) to compare performance.
+We also experimented with EfficientNetB0, Xception and Densenet121 to compare performance.
 
 ### Custom ResNet50 Implementation
 
