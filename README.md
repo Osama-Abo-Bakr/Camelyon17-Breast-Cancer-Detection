@@ -12,7 +12,7 @@ model design, training, evaluation, and deployment.
 To run this code, ensure that the following libraries are installed:
 
 ```bash
-pip install -U efficientnet tensorflow numpy matplotlib pandas pillow scikit-learn
+pip install -U efficientnet tensorflow numpy matplotlib pandas scikit-learn
 ```
 
 ## 2. Data Loading and Exploration
@@ -34,8 +34,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import * 
 import os
 import shutil
-import json
-from PIL import Image
 ```
 
 **Data Loading Function**
@@ -257,13 +255,35 @@ model_DenseNet121 = Sequential([
 ## 6. Model Training and Evaluation
 
 ### Training
+F1-Score Function.
+```python
+import tensorflow as tf
+from tensorflow.keras import backend as K
+
+def recall_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+    recall = true_positives / (possible_positives + K.epsilon())
+    return recall
+
+def precision_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    precision = true_positives / (predicted_positives + K.epsilon())
+    return precision
+
+def f1_score(y_true, y_pred):
+    precision = precision_m(y_true, y_pred)
+    recall = recall_m(y_true, y_pred)
+    return 2*((precision*recall)/(precision+recall+K.epsilon()))
+```
 
 We train the models using the Adam optimizer and binary cross-entropy loss.
 
 ```python
 model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
               loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-              metrics=['accuracy', tf.keras.metrics.AUC()])
+              metrics=['accuracy', tf.keras.metrics.AUC(), f1_score])
 
 history = model.fit(
     train_generator,
@@ -316,7 +336,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 ### Results After Over Sampling
 
 #### ResNet Metrics After Over Sampling
-![ResNet Metrics](resnet_result_2.png)
+![ResNet Metrics](Resnet50_result_2.png)
 
 #### EfficientNetB0 Metrics After Over Sampling
 ![EfficientNetB0 Metrics](EfficientNetB0_result_2.png)
