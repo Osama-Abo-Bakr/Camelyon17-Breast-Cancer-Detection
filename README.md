@@ -255,7 +255,7 @@ model_DenseNet121 = Sequential([
 ## 6. Model Training and Evaluation
 
 ### Parameter
-optimizer=Adam, loss=Binary_CrossEntropy, epochs=10, metrics=['accuracy', 'Area Under Carve', 'F1_score']
+optimizer=Adam, loss=Binary_CrossEntropy, epochs=10, metrics=['accuracy', 'Area Under Carve', 'F1_score'], Learning Rate=0.001
 
 ### Training
 F1-Score Function.
