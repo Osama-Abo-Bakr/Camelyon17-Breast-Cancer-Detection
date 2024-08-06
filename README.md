@@ -254,6 +254,9 @@ model_DenseNet121 = Sequential([
 
 ## 6. Model Training and Evaluation
 
+### Parameter
+optimizer=Adam, loss=Binary_CrossEntropy, epochs=10, metrics=['accuracy', 'Area Under Carve', 'F1_score']
+
 ### Training
 F1-Score Function.
 ```python
@@ -382,16 +385,59 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 
 #### ResNet Metrics After Over Sampling
 ![ResNet Metrics](Resnet50_result_2.png)
+```text
+1 - ResNet50.
+	Loss: 0.0887
+	Accuracy: 96.68%
+	AUC: 97.44%
+	F1-score: 96.55%
+	Validation Loss: 0.1178
+	Validation Accuracy: 95.86%
+	Validation AUC: 96.63%
+	Validation F1-score: 95.72%
+```
 
 #### EfficientNetB0 Metrics After Over Sampling
 ![EfficientNetB0 Metrics](EfficientNetB0_result_2.png)
-
+```text
+2 - EfficientNetB0.
+	Loss: 0.0540
+	Accuracy: 98.20%
+	AUC: 99.75%
+	F1-score: 98.12%
+	Validation Loss: 0.0774
+	Validation Accuracy: 97.43%
+	Validation AUC: 99.53%
+	Validation F1-score: 97.36%
+```
 #### Xception Metrics After Over Sampling
 ![ResNet Metrics](Xception_result_2.png)
-
+```text
+3 - Xception.
+	Loss: 0.0311
+	Accuracy: 98.92%
+	AUC: 99.90%
+	F1-score: 98.87%
+	Validation Loss: 0.1980
+	Validation Accuracy: 97.06%
+	Validation AUC: 99.25%
+	Validation F1-score: 96.99%
+```
 #### Densenet121 Metrics After Over Sampling
 ![EfficientNetB0 Metrics](DenseNet121_result_2.png)
+```text
+4 - DenseNet121.
+	Loss: 0.0658
+	Accuracy: 97.82%
+	AUC: 99.64%
+	F1-score: 97.74%
+	Validation Loss: 0.4114
+	Validation Accuracy: 89.01%
+	Validation AUC: 95.90%
+	Validation F1-score: 87.55%
+```
 
+------------------------------------------------------------------------------------------------
 
 ## 5. References
 
