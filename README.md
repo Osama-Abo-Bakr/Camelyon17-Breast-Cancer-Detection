@@ -156,10 +156,16 @@ for i, image_path in enumerate(images):
 plt.tight_layout()
 plt.show()
 ```
+![plot](plt.png)
 
 ## 3. Apply Over Sampling.
+we apply random sampling to transform data from imblanced data into blanced data.
+\nclass 0 have --> 130908. 
+\nclass 1 have --> 89117.
+### Before Over Sampling
 ![Data Before Over Sampling](beforeOS.png)
-and we apply random sampling to transform data from imblanced data into blanced data.
+
+### After Over Sampling
 ![Data After Over Sampling](Over_Sampling.png)
 
 ## 3. Model Design
