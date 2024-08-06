@@ -2,7 +2,10 @@
 
 ## Overview
 
-This project aims to develop a breast cancer detection model using the Camelyon17 dataset. The dataset comprises histopathological images of breast cancer tissues, which we use to classify the images into cancerous and non-cancerous categories. The project involves data exploration, model design, training, evaluation, and deployment.
+This project aims to develop a breast cancer detection model using the Camelyon17 dataset.
+The dataset comprises histopathological images of breast cancer tissues,which we use to classify
+the images into cancerous and non-cancerous categories. The project involves data exploration,
+model design, training, evaluation, and deployment.
 
 ## 1. Prerequisites
 
@@ -14,7 +17,7 @@ pip install -U efficientnet tensorflow numpy matplotlib pandas pillow scikit-lea
 
 ## 2. Data Loading and Exploration
 
-The dataset used is the [Camelyon17](https://www.kaggle.com/competitions/histopathologic-cancer-detection/overview) dataset. We start by loading and visualizing the data to understand its structure and the distribution of classes.
+The dataset used is the [Camelyon17](https://www.camelyon17.org/) dataset. We start by loading and visualizing the data to understand its structure and the distribution of classes.
 
 ### Code
 
@@ -53,25 +56,118 @@ example_array = np.array(example_img)
 print(f"Image Shape = {example_array.shape}")
 plt.imshow(example_img)
 plt.show()
-
-train_labels_df = pd.read_csv('/kaggle/input/histopathologic-cancer-detection/train_labels.csv')
-train_labels_df["filename"] = train_labels_df["id"].apply(train_img_path)
-train_labels_df["label"] = train_labels_df["label"].astype(str)
-train_labels_df.head()
-
-train_labels_df.shape
-set(train_labels_df['label'])
 ```
+
+## 3. Image Display and Histogram Analysis.
+
+This script samples non-cancerous images from a dataset,
+displays them, and plots their corresponding color and grayscale histograms.
+
+## How It Works
+1. **Sample Non-Cancerous/Cancerous  Images:**
+   The script randomly selects 5 filenames of non-cancerous/Cancerous images from a dataframe `train_labels_df` where the label is '0' (non-cancerous) and '1' for (Cancerous).
+
+
+2. **Set Up Plot:**
+   A figure with subplots is created. The number of rows corresponds to the number of sampled images, and each row contains 4 columns.
+
+ 
+3. **Process and Display Each Image:**
+   - The script reads each image in color and converts it to grayscale.
+   - The color image is split into its blue, green, and red channels.
+
+
+4. **Display Original Image:**
+   The original color image is displayed in the first column of the subplot row.
+
+
+
+5. **Plot Color Histograms:**
+   Histograms for each color channel are calculated and plotted in the second column of the subplot row.
+
+
+6. **Display Grayscale Image:**
+   The grayscale image is displayed in the third column of the subplot row.
+
+
+7. **Plot Grayscale Histogram:**
+   A histogram for the grayscale image is calculated and plotted in the fourth column of the subplot row.
+
+
+8. **Final Layout and Display:**
+   The layout is adjusted to prevent overlap, and the plot is displayed.
+
+
+## Code
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+
+# Sample filenames from the dataframe 
+
+# This Sample For Non-Cancerous Images
+images = np.random.choice(train_labels_df[train_labels_df['label'] == '0']['filename'], 5)
+
+# This Sample For Cancerous Images
+images = np.random.choice(train_labels_df[train_labels_df['label'] == '1']['filename'], 5)
+
+print("Non-Cancerous Images")
+# Set up the figure and subplots
+fig, axs = plt.subplots(len(images), 4, figsize=(25, 5 * len(images)))
+
+for i, image_path in enumerate(images):
+    color_image = cv2.imread(image_path)
+    gray_image = cv2.cvtColor(color_image, cv2.COLOR_BGR2GRAY)
+
+    # Split the image into its color channels
+    channels = cv2.split(color_image)
+    colors = ('b', 'g', 'r')
+    channel_ids = (0, 1, 2)
+
+    # Original Image
+    axs[i, 0].imshow(cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB))
+    axs[i, 0].set_title("Original Image")
+    axs[i, 0].axis('off')
+
+    # Plot histograms for each color channel
+    axs[i, 1].set_title("Color Histogram")
+    axs[i, 1].set_xlabel("Bins")
+    axs[i, 1].set_ylabel("# of Pixels")
+    for (channel, color, channel_id) in zip(channels, colors, channel_ids):
+        hist = cv2.calcHist([channel], [0], None, [256], [0, 256])
+        axs[i, 1].plot(hist, color=color)
+        axs[i, 1].set_xlim([0, 256])
+
+    # Grayscale Image
+    axs[i, 2].imshow(gray_image, cmap='gray')
+    axs[i, 2].set_title("Grayscale Image")
+    axs[i, 2].axis('off')
+
+    # Grayscale Histogram
+    gray_hist = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+    axs[i, 3].set_title("Grayscale Histogram")
+    axs[i, 3].set_xlabel("Bins")
+    axs[i, 3].set_ylabel("# of Pixels")
+    axs[i, 3].plot(gray_hist)
+    axs[i, 3].set_xlim([0, 256])
+
+plt.tight_layout()
+plt.show()
+```
+
+## 3. Apply Over Sampling.
+
+![Data Before Over Sampling](count images before SMOTE.png)
+and we apply random sampling to transform data from imblanced data into blanced data.
+![Data After Over Sampling](After Over Sampling.png)
 
 ## 3. Model Design
 
 We designed a custom ResNet50 model, leveraging the strengths of residual networks to address the image classification task. We also experimented with EfficientNetB0 and Vision Transformers (ViT) to compare performance.
 
 ### Custom ResNet50 Implementation
-
-#### ResNet Model
-
-![ResNet Model](resnet.png)
 
 ```python
 def identity_block(X, f, filters, training=True, initializer=random_uniform):
@@ -88,10 +184,6 @@ def ResNet50(input_shape=(96, 96, 3)):
 ```
 
 ### EfficientNetB0 Implementation
-
-#### EfficientNetB0 Model
-
-![EfficientNetB0 Model](EfficientNet.jpg)
 
 ```python
 import efficientnet.tfkeras as efn
@@ -110,9 +202,6 @@ cnn = Sequential([
 ```
 
 ### Vision Transformer (ViT) Implementation
-#### Vision Transformer
-
-![Vision Transformer Model](vit_architecture.jpg)
 
 ```python
 from transformers import ViTForImageClassification, ViTokenizer
@@ -169,11 +258,11 @@ Below are the training and validation metrics for ResNet and EfficientNetB0.
 
 #### ResNet Metrics
 
-![ResNet Metrics](download.png)
+![ResNet Metrics](resnet.png)
 
 #### EfficientNetB0 Metrics
 
-![EfficientNetB0 Metrics](0.png)
+![EfficientNetB0 Metrics](EfficientNet.jpg)
 
 ## 5. References
 
