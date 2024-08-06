@@ -158,10 +158,9 @@ plt.show()
 ```
 
 ## 3. Apply Over Sampling.
-
-![Data Before Over Sampling](count images before SMOTE.png)
+![Data Before Over Sampling](beforeOS.png)
 and we apply random sampling to transform data from imblanced data into blanced data.
-![Data After Over Sampling](After Over Sampling.png)
+![Data After Over Sampling](Over_Sampling.png)
 
 ## 3. Model Design
 
@@ -263,6 +262,7 @@ Below are the training and validation metrics for ResNet and EfficientNetB0.
 #### EfficientNetB0 Metrics
 
 ![EfficientNetB0 Metrics](EfficientNet.jpg)
+
 
 ## 5. References
 
