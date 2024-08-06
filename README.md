@@ -156,12 +156,24 @@ for i, image_path in enumerate(images):
 plt.tight_layout()
 plt.show()
 ```
-![plot](plt.png)
+![plot](plot.png)
 
-## 3. Apply Over Sampling.
-we apply random sampling to transform data from imblanced data into blanced data.
-\nclass 0 have --> 130908. 
-\nclass 1 have --> 89117.
+## 4. Apply Over Sampling.
+Oversampling is a technique used to address class imbalance by increasing the number of instances in the minority class. Here, we can apply random oversampling to create a more balanced dataset by duplicating samples from the minority class (Class 1) to match the number of samples in the majority class (Class 0).
+
+### Steps for Random Oversampling
+
+1. **Identify the Imbalance:**
+   - Class 0 (Non-Cancerous): 130,908 images
+   - Class 1 (Cancerous): 89,117 images
+
+2. **Calculate the Number of Samples Needed:**
+   - To balance the classes, we need to increase the number of Class 1 samples to match Class 0.
+   - Additional samples needed for Class 1: \(130,908 - 89,117 = 41,791\)
+
+3. **Randomly Sample from Class 1:**
+   - Randomly select samples from Class 1 with replacement until the class size matches Class 0.
+
 ### Before Over Sampling
 ![Data Before Over Sampling](beforeOS.png)
 
