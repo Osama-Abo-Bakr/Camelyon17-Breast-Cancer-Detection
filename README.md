@@ -154,7 +154,12 @@ for i, image_path in enumerate(images):
 plt.tight_layout()
 plt.show()
 ```
-![plot](plot.png)
+
+### Cancer Image
+![Cancer Image](plot.png)
+
+### Non-Cancer Image
+![Non-Cancer Image](non_Cancer.png)
 
 ## 4. Apply Over Sampling.
 Oversampling is a technique used to address class imbalance by increasing the number of instances in the minority class. Here, we can apply random oversampling to create a more balanced dataset by duplicating samples from the minority class (Class 1) to match the number of samples in the majority class (Class 0).
