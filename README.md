@@ -180,23 +180,24 @@ Oversampling is a technique used to address class imbalance by increasing the nu
 ### After Over Sampling
 ![Data After Over Sampling](Over_Sampling.png)
 
-## 3. Model Design
+## 5. Model Design
 
-We designed a custom ResNet50 model, leveraging the strengths of residual networks to address the image classification task. We also experimented with EfficientNetB0 and Vision Transformers (ViT) to compare performance.
+We designed a custom ResNet50 model, leveraging the strengths of residual networks to address the image classification task.
+We also experimented with EfficientNetB0 and Vision Transformers (ViT) to compare performance.
 
 ### Custom ResNet50 Implementation
 
 ```python
 def identity_block(X, f, filters, training=True, initializer=random_uniform):
-    # Implementation details...
+    # details In NoteBook
     return X
 
 def convolutional_block(X, f, filters, s=2, training=True, initializer=glorot_uniform):
-    # Implementation details...
+    # details In NoteBook
     return X
 
 def ResNet50(input_shape=(96, 96, 3)):
-    # Implementation details...
+    # details In NoteBook
     return model
 ```
 
@@ -218,14 +219,42 @@ cnn = Sequential([
 ])
 ```
 
-### Vision Transformer (ViT) Implementation
+### Xception Implementation.
 
 ```python
-from transformers import ViTForImageClassification, ViTokenizer
-# Implementation details...
+base_model_Xception = tf.keras.applications.Xception(include_top= False, weights= "imagenet",
+                                                      input_shape=(96,96,3), pooling= 'max')
+    
+model_Xception = Sequential([
+    base_model_Xception,
+    Flatten(),
+    Dropout(rate= 0.3),
+    Dense(128, activation= 'relu'),
+    Dropout(rate= 0.25),
+    Dense(1, activation= 'sigmoid')
+])
 ```
 
-## 4. Model Training and Evaluation
+### Densenet121 Implementation.
+
+```python
+base_model_DenseNet121 = DenseNet121(input_shape=(96, 96, 3), include_top=False, weights='imagenet')
+
+model_DenseNet121 = Sequential([
+    base_model_DenseNet121,
+    
+    Flatten(),
+    
+    Dense(256, activation='relu'),
+    Dropout(0.5),
+    Dense(32, activation='relu'),
+    Dropout(0.5),
+    BatchNormalization(),
+    Dense(1, activation='sigmoid')
+])
+```
+
+## 6. Model Training and Evaluation
 
 ### Training
 
@@ -269,17 +298,34 @@ print(f"F1 Score: {f1:.4f}")
 print(f"ROC-AUC: {roc_auc:.4f}")
 ```
 
-### Results
-
-Below are the training and validation metrics for ResNet and EfficientNetB0.
+### Results Before Over Sampling
 
 #### ResNet Metrics
-
-![ResNet Metrics](resnet.png)
+![ResNet Metrics](resnet_result_0.png)
 
 #### EfficientNetB0 Metrics
+![EfficientNetB0 Metrics](EfficientNetB0_result_0.png)
 
-![EfficientNetB0 Metrics](EfficientNet.jpg)
+#### Xception Metrics
+![ResNet Metrics](Xception_result_0.png)
+
+#### Densenet121 Metrics
+![EfficientNetB0 Metrics](DenseNet121_result_0.png)
+
+------------------------------------------------------------------------------------------
+### Results After Over Sampling
+
+#### ResNet Metrics After Over Sampling
+![ResNet Metrics](resnet_result_2.png)
+
+#### EfficientNetB0 Metrics After Over Sampling
+![EfficientNetB0 Metrics](EfficientNetB0_result_2.png)
+
+#### Xception Metrics After Over Sampling
+![ResNet Metrics](Xception_result_2.png)
+
+#### Densenet121 Metrics After Over Sampling
+![EfficientNetB0 Metrics](DenseNet121_result_2.png)
 
 
 ## 5. References
