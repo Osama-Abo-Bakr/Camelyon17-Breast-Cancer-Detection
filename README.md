@@ -350,6 +350,14 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 
 ## 5. References
 
-1. **ResNet**: He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep Residual Learning for Image Recognition. *In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. [Link](https://arxiv.org/abs/1512.03385)
-2. **EfficientNet**: Tan, M., & Le, Q. V. (2019). EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. *In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*. [Link](https://arxiv.org/abs/1905.11946)
-3. **Vision Transformer**: Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., & others (2021). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. *In Proceedings of the International Conference on Learning Representations (ICLR)*. [Link](https://arxiv.org/abs/2010.11929)
+1. **ResNet:**  
+   He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep Residual Learning for Image Recognition. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). [Link](https://arxiv.org/abs/1512.03385)
+
+2. **EfficientNet:**  
+   Tan, M., & Le, Q. V. (2019). EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). [Link](https://arxiv.org/abs/1905.11946)
+
+3. **Xception:**  
+   Chollet, F. (2017). Xception: Deep Learning with Depthwise Separable Convolutions. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). [Link](https://arxiv.org/abs/1610.02357)
+
+4. **DenseNet121:**  
+   Huang, G., Liu, Z., Van Der Maaten, L., & Weinberger, K. Q. (2017). Densely Connected Convolutional Networks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). [Link](https://arxiv.org/abs/1608.06993)
