@@ -322,15 +322,60 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 
 #### ResNet Metrics
 ![ResNet Metrics](resnet_result_0.png)
+```text
+1 - ResNet50.
+	Loss: 0.1041
+	Accuracy: 96.07%
+	AUC: 96.58%
+	F1-score: 94.86%
+	Validation Loss: 0.1495
+	Validation Accuracy: 94.60%
+	Validation AUC: 94.81%
+	Validation F1-score: 92.88%
+```
 
 #### EfficientNetB0 Metrics
 ![EfficientNetB0 Metrics](EfficientNetB0_result_0.png)
 
+```text
+2 - EfficientNetB0.
+	Loss: 0.0656
+	Accuracy: 97.79%
+	AUC: 99.63%
+	F1-score: 97.16%
+	Validation Loss: 0.1149
+	Validation Accuracy: 96.06%
+	Validation AUC: 99.15%
+	Validation F1-score: 95.03%
+ ```
+
 #### Xception Metrics
 ![ResNet Metrics](Xception_result_0.png)
+```text
+3 - Xception.
+	Loss: 0.0420
+	Accuracy: 98.52%
+	AUC: 99.83%
+	F1-score: 98.08%
+	Validation Loss: 0.1584
+	Validation Accuracy: 95.21%
+	Validation AUC: 98.63%
+	Validation F1-score: 93.59%
+```
 
 #### Densenet121 Metrics
 ![EfficientNetB0 Metrics](DenseNet121_result_0.png)
+```text
+4 - DenseNet121.
+	Loss: 0.0854
+	Accuracy: 97.21%
+	AUC: 99.42%
+	F1-score: 96.4%
+	Validation Loss: 0.2042
+	Validation Accuracy: 93.61%
+	Validation AUC: 97.95%
+	Validation F1-score: 91.34%
+```
 
 ------------------------------------------------------------------------------------------
 ### Results After Over Sampling
