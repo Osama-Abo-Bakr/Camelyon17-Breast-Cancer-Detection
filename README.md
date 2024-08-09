@@ -326,7 +326,7 @@ print(f"F1 Score: {f1:.4f}")
 print(f"ROC-AUC: {roc_auc:.4f}")
 ```
 
-### Results Before Over Sampling
+### Results Before Over Sampling With Learning rate = 0.001
 
 #### ResNet Metrics
 ![ResNet Metrics](resnet_result_0.png)
@@ -358,7 +358,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
  ```
 
 #### Xception Metrics
-![ResNet Metrics](Xception_result_0.png)
+![Xception Metrics](Xception_result_0.png)
 ```text
 3 - Xception.
 	Loss: 0.0420
@@ -385,8 +385,67 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 91.34%
 ```
 
+
+### Results Before Over Sampling With Learning rate = 0.0001
+
+#### ResNet Metrics
+![ResNet Metrics](Before_oversampling_lr=0.0001/restnet_result_0.png)
+```text
+1 - ResNet50.
+	Loss: 0.0712
+	Accuracy: 97.35%
+	AUC: 97.71%
+	F1-score: 96.85%
+	Validation Loss: 0.1687
+	Validation Accuracy: 94.50%
+	Validation AUC: 95.04%
+	Validation F1-score: 92.89%
+```
+
+#### EfficientNetB0 Metrics
+![EfficientNetB0 Metrics](Before_oversampling_lr=0.0001/EfficientNetB0_result_0.png)
+
+```text
+2 - EfficientNetB0.
+	Loss: 0.0373
+	Accuracy: 98.80%
+	AUC: 99.85%
+	F1-score: 98.45%
+	Validation Loss: 0.1118
+	Validation Accuracy: 96.96%
+	Validation AUC: 99.00%
+	Validation F1-score: 96.04%
+ ```
+
+#### Xception Metrics
+![Xception Metrics](Before_oversampling_lr=0.0001/Xception_result_0.png)
+```text
+3 - Xception.
+	Loss: 0.0165
+	Accuracy: 99.44%
+	AUC: 99.95%
+	F1-score: 99.28%
+	Validation Loss: 0.1565
+	Validation Accuracy: 96.61%
+	Validation AUC: 98.77%
+	Validation F1-score: 95.69%
+```
+
+#### Densenet121 Metrics
+![EfficientNetB0 Metrics](Before_oversampling_lr=0.0001/DenseNet121_result_0.png)
+```text
+4 - DenseNet121.
+	Loss: 0.0344
+	Accuracy: 98.92%
+	AUC: 99.87%
+	F1-score: 98.60%
+	Validation Loss: 0.1151
+	Validation Accuracy: 96.57%
+	Validation AUC: 99.13%
+	Validation F1-score: 95.69%
+```
 ------------------------------------------------------------------------------------------
-### Results After Over Sampling
+### Results After Over Sampling With Learning Rate = 0.001
 
 #### ResNet Metrics After Over Sampling
 ![ResNet Metrics](Resnet50_result_2.png)
