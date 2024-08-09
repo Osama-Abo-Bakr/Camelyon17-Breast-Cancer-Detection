@@ -501,6 +501,62 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 87.55%
 ```
 
+### Results After Over Sampling With Learning Rate = 0.0001
+
+#### ResNet Metrics After Over Sampling
+![ResNet Metrics](after_oversampling_lr=0.0001/Resnet50_result_1.png)
+```text
+1 - Resnet50.
+	Loss: 0.0537
+	Accuracy: 98.01%
+	AUC: 98.46%
+	F1-score: 97.92%
+	Validation Loss: 0.1219
+	Validation Accuracy: 96.17%
+	Validation AUC: 96.78%
+	Validation F1-score: 96.07%
+```
+
+#### EfficientNetB0 Metrics After Over Sampling
+![EfficientNetB0 Metrics](after_oversampling_lr=0.0001/EfficientNetB0_result_1.png)
+```text
+2 - EfficientNetB0.
+	Loss: 0.0298
+	Accuracy: 99.06%
+	AUC: 99.89%
+	F1-score: 99.03%
+	Validation Loss: 0.0824
+	Validation Accuracy: 97.88%
+	Validation AUC: 99.40%
+	Validation F1-score: 97.85%
+```
+#### Xception Metrics After Over Sampling
+![ResNet Metrics](after_oversampling_lr=0.0001/Xception_result_1.png)
+```text
+3 - Xception.
+	Loss: 0.0143
+	Accuracy: 99.54%
+	AUC: 99.96%
+	F1-score: 99.52%
+	Validation Loss: 0.0810
+	Validation Accuracy: 98.14%
+	Validation AUC: 99.45%
+	Validation F1-score: 98.07%
+```
+#### Densenet121 Metrics After Over Sampling
+![EfficientNetB0 Metrics](after_oversampling_lr=0.0001/DenseNet121_result_2.png)
+```text
+4 - DenseNet121.
+	Loss: 0.0259
+	Accuracy: 99.21%
+	AUC: 99.91%
+	F1-score: 99.17%
+	Validation Loss: 0.0896
+	Validation Accuracy: 97.64%
+	Validation AUC: 99.37%
+	Validation F1-score: 97.52%
+```
+
 ------------------------------------------------------------------------------------------------
 
 ## 5. References
