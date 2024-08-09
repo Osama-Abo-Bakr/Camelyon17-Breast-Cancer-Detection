@@ -475,7 +475,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 97.36%
 ```
 #### Xception Metrics After Over Sampling
-![ResNet Metrics](Xception_result_2.png)
+![Xception Metrics](Xception_result_2.png)
 ```text
 3 - Xception.
 	Loss: 0.0311
@@ -488,7 +488,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 96.99%
 ```
 #### Densenet121 Metrics After Over Sampling
-![EfficientNetB0 Metrics](DenseNet121_result_2.png)
+![Densenet121 Metrics](DenseNet121_result_2.png)
 ```text
 4 - DenseNet121.
 	Loss: 0.0658
@@ -531,7 +531,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 97.85%
 ```
 #### Xception Metrics After Over Sampling
-![ResNet Metrics](after_oversampling_lr=0.0001/Xception_result_1.png)
+![Xception Metrics](after_oversampling_lr=0.0001/Xception_result_1.png)
 ```text
 3 - Xception.
 	Loss: 0.0143
@@ -544,7 +544,7 @@ print(f"ROC-AUC: {roc_auc:.4f}")
 	Validation F1-score: 98.07%
 ```
 #### Densenet121 Metrics After Over Sampling
-![EfficientNetB0 Metrics](after_oversampling_lr=0.0001/DenseNet121_result_2.png)
+![DenseNet121 Metrics](after_oversampling_lr=0.0001/DenseNet121_result_1.png)
 ```text
 4 - DenseNet121.
 	Loss: 0.0259
